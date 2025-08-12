@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { ShopModule } from './shop/shop-module';
 import { CoreModule } from './core/core-module';
+import { SharedModule } from './shared/shared-module';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,13 @@ import { CoreModule } from './core/core-module';
     BrowserModule,
     AppRoutingModule ,
     ShopModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+      provideHttpClient()
+
   ],
   bootstrap: [App]
 })
