@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'E-commerce-Angualr-Frontend';
+  protected title = 'E-commerce-Angular-Frontend';
 }
