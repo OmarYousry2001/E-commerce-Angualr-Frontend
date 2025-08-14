@@ -8,23 +8,23 @@ import { environment } from '../environments/environment.development';
   standalone: false,
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
+export class App   {
 
-  constructor(private httpClient: HttpClient) {}
-category:any;
-  getCateGory()
-  {
-    this.httpClient.get(environment.baseUrl+'Category/GetAll').subscribe({
-      next:(value:any) =>{
-        this.category = value
-        console.log(this.category);
-      }
-    })
-  }
+//   constructor(private httpClient: HttpClient) {}
+// category:any;
+//   getCateGory()
+//   {
+//     this.httpClient.get(environment.baseUrl+'Category/GetAll').subscribe({
+//       next:(value:any) =>{
+//         this.category = value
+//         console.log(this.category);
+//       }
+//     })
+//   }
   
-  ngOnInit(): void {
-   this.getCateGory();
-  }
+//   ngOnInit(): void {
+//    this.getCateGory();
+//   }
 
   protected title = 'E-commerce-Angular-Frontend';
 }

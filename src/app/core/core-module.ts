@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBar } from './nav-bar/nav-bar';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +11,8 @@ import { RouterLink } from '@angular/router';
   ],
   imports: [
      CommonModule,
-     RouterLink
+     RouterLink,
+     RouterModule
   ],
   exports:[NavBar]
 })
