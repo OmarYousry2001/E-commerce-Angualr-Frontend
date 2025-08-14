@@ -6,6 +6,7 @@ import { ShopModule } from './shop/shop-module';
 import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared-module';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,14 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
     AppRoutingModule ,
     ShopModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      positionClass: 'toast-top-right',
+      countDuplicates: true,
+      timeOut: 1500,
+      progressBar: true,
+    })
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

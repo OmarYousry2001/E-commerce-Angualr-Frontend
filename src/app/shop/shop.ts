@@ -5,6 +5,7 @@ import { BaseSearchCriteriaModel } from '../shared/Models/ProductParam';
 import { ShopService } from './shop-service';
 import { IPaginatedResult } from '../shared/Models/PaginatedResult';
 import { OrderingEnum } from '../shared/Models/OrderingEnum';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-shop',
@@ -18,21 +19,21 @@ export class Shop implements OnInit  {
        TotalCount: number=0;
   ProductParam = new BaseSearchCriteriaModel();
 
-  constructor(private shopService: ShopService) {}
+  constructor(private _shopService: ShopService
+   
+  ) {}
 
     ngOnInit(): void {
     this.getAllProduct();
     this.getCategory();
   }
   getAllProduct() {
-    this.shopService.getProduct(this.ProductParam).subscribe({
+    this._shopService.getProduct(this.ProductParam).subscribe({
       next: (value: IPaginatedResult<IProduct>) => {
         this.product = value.data;
         this.TotalCount = value.totalCount;
         this.ProductParam.pageNumber = value.currentPage;
         this.ProductParam.pageSize = value.pageSize;
-        // this.toast.success('product loaded ok');
-        console.log(this.product)
       },
       error:(er) =>
       {
@@ -42,10 +43,9 @@ export class Shop implements OnInit  {
   }
 
  getCategory() {
-    this.shopService.getCategory().subscribe({
+    this._shopService.getCategory().subscribe({
       next: (value) => {
         this.Category = value.data;
-        console.log(this.Category );
       },
         error:(er) =>
       {
