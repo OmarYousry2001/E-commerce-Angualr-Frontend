@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBar } from './nav-bar/nav-bar';
 import { RouterLink, RouterModule } from '@angular/router';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,9 @@ import { RouterLink, RouterModule } from '@angular/router';
   imports: [
      CommonModule,
      RouterLink,
-     RouterModule
+     RouterModule,
+     BrowserAnimationsModule,
+     MatBadgeModule
   ],
   exports:[NavBar]
 })

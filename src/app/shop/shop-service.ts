@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment.development';
 import { BaseSearchCriteriaModel } from '../shared/Models/ProductParam';
 import { OrderingEnum } from '../shared/Models/OrderingEnum';
 import { IPaginatedResult } from '../shared/Models/PaginatedResult';
+import { ICategory } from '../shared/Models/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,11 @@ export class ShopService {
 }
 
 
-      getCategory(): Observable<IGenericResponse> {
-    return this.http.get<IGenericResponse>(environment.baseUrl+ 'Category/GetAll');
+      getCategory(): Observable<IGenericResponse<ICategory[]>> {
+    return this.http.get<IGenericResponse<ICategory[]>>(environment.baseUrl+ 'Category/GetAll');
+  }
+   getProductDetails(id: string) {
+    return this.http.get<IGenericResponse<IProduct>>(environment.baseUrl + 'Product/' + id);
   }
   
 }

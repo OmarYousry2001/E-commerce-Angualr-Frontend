@@ -5,7 +5,7 @@ import { BaseSearchCriteriaModel } from '../shared/Models/ProductParam';
 import { ShopService } from './shop-service';
 import { IPaginatedResult } from '../shared/Models/PaginatedResult';
 import { OrderingEnum } from '../shared/Models/OrderingEnum';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-shop',

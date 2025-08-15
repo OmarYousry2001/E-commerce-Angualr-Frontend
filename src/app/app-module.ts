@@ -7,6 +7,10 @@ import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared-module';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { loaderInterceptor } from './core/Interceptor/loader-interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -24,11 +28,19 @@ import { ToastrModule } from 'ngx-toastr';
       countDuplicates: true,
       timeOut: 1500,
       progressBar: true,
-    })
+    }),
+    NgxSpinnerModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-      provideHttpClient()
+      provideHttpClient(),
+      provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: loaderInterceptor, multi: true },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: credentialsInterceptor,
+    //   multi: true,
+    // },
 
   ],
   bootstrap: [App]
