@@ -33,7 +33,7 @@ export class BasketService {
       map((value:IGenericResponse<IBasket> ) => {
         // Fire
         this.basketSource.next(value.data);
-        // this.calculateTotal();
+        this.calculateTotal();
         return value;
       })
     );
@@ -46,7 +46,7 @@ export class BasketService {
       .subscribe({
         next: (value: IGenericResponse<IBasket>) => {
           this.basketSource.next(value.data);
-          // this.calculateTotal();
+          this.calculateTotal();
           console.log(value);
         },
         error(err) {
@@ -216,7 +216,7 @@ export class BasketService {
 
     const basket = this.getCurrentValue();
         if (!basket) return;
-    const shipping = this.shipPrice;
+    const shipping = this.shipPrice??0;
     const subtotal = basket.basketItems.reduce((a, c) => {
       return c.price * c.quantity + a ;
     }, 0);

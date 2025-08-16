@@ -33,7 +33,7 @@
                 <div class="price-area my-4">
                     <p class="old-price mb-1"><del>{{product.oldPrice|currency}}</del> <span
                             class="old-price-discount text-danger">
-                            (%{{CalucateDiscount(product.oldPrice,product.newPrice)|number:'1.0-2'}} off)</span></p>
+                            (%{{CalculateDiscount(product.oldPrice,product.newPrice)|number:'1.0-2'}} off)</span></p>
                     <p class="new-price text-bold mb-1">{{product.newPrice|currency}}</p>
 
                     <p class="text-danger">quantity : {{quantity}}</p>

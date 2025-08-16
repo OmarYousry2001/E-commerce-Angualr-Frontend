@@ -60,7 +60,8 @@ export class ProductDetails implements OnInit {
     this.basketService.addItemToBasket(this.product, this.quantity);
     this.toast.success('item has been added to basket', 'SUCCESS');
   }
-  CalucateDiscount(oldPrice: number, newPrice: number): number {
+  CalculateDiscount
+(oldPrice: number, newPrice: number): number {
     return parseFloat(
       Math.round(((oldPrice - newPrice) / oldPrice) * 100).toFixed(1)
     );
