@@ -20,5 +20,5 @@ export class ShopItem {
     this._basketService.addItemToBasket(this.Product);
    
   }
-  
+ 
 }
