@@ -1,0 +1,109 @@
+<section class="pt-5">
+    <div class="form-container">
+        <h2 class="text-center">Register</h2>
+        <form [formGroup]="fromGroup" (ngSubmit)="onSubmit()">
+
+
+            <div class="form-group">
+                <label for="username">UserName</label>
+                <input type="text" class="form-control" id="username" formControlName="userName"
+                    placeholder="Enter username" [class.is-valid]="_username?.valid"
+                    [class.is-invalid]="_username.invalid&&_username.touched">
+                @if(_username.hasError('required') && _username.touched)
+                {
+                <span class="text-danger">Username is required</span>
+                }
+                @if(_username.hasError('minlength') && _username.touched)
+                {
+                <span class="text-danger">Username must be at least 6 characters</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email"
+                    [class.is-valid]="_email.valid" [class.is-invalid]="_email.invalid&&_email.touched   ">
+                @if(_email.hasError('required') && _email.touched)
+                {
+                <span class="text-danger">Email is required</span>
+                }
+                @if( _email.hasError('email') && _email.touched)
+                {
+                <span class="text-danger">Email is not valid</span>
+                }
+            </div>
+
+            <div class="form-froup">
+                <label for="DisplayName">DisplayName</label>
+                <input type="text" class="form-control" id="displayName" formControlName="displayName"
+                    placeholder="Enter display name" [class.is-valid]="_DisplayName.valid"
+                    [class.is-invalid]="_DisplayName.invalid&&_DisplayName.touched   ">
+
+                @if(_DisplayName.invalid===true && _DisplayName.touched)
+                {
+                <span class="text-danger">Display Name is required</span>
+                }
+
+            </div>
+
+
+             <div class="form-froup">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    placeholder="Enter password" [class.is-valid]="_password.valid"
+                    [class.is-invalid]="_password.invalid&&_password.touched   ">
+                @if(_password.hasError('required') && _password.touched)
+                {
+                <span class="text-danger">Password is required</span>
+                }
+                @if(_password.hasError('minlength') && _password.touched)
+                {
+                <span class="text-danger">Password must be at least 6 characters</span>
+                }
+                @if(_password.hasError('pattern') && _password.touched)
+                {
+                <span class="text-danger">Password must contain at least one uppercase letter, one lowercase letter, one
+                    number, and one special character</span>
+                }
+
+
+            </div>
+
+
+         <div class="form-group">
+            <label for="passwordConfirmation">Password Confirmation</label>
+          <input type="password"
+         class="form-control"
+         id="passwordConfirmation"
+         formControlName="passwordConfirmation"
+         placeholder="Enter password confirmation"
+         [class.is-valid]="_passwordConfirmation.valid && !fromGroup.errors?.['mismatch']"
+         [class.is-invalid]="_passwordConfirmation.touched && (_passwordConfirmation.invalid || fromGroup.errors?.['mismatch'])">
+
+  <!-- Required error -->
+  @if(_passwordConfirmation.hasError('required') && _passwordConfirmation.touched)
+  {
+    <span class="text-danger">Password confirmation is required</span>
+  }
+
+  <!-- Mismatch error -->
+  @if(fromGroup.errors?.['mismatch'] && _passwordConfirmation.touched)
+  {
+    <span class="text-danger">Passwords do not match</span>
+  }
+</div>
+
+
+            <div class="form-group">
+                <button class="btn btn-info w-100" [disabled]="fromGroup.invalid">
+                    Register
+                </button>
+            </div>
+
+
+
+        </form>
+    </div>
+</section>
+
+

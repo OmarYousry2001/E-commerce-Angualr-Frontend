@@ -7,10 +7,12 @@ import {
   IBasketItem,
   IBasketTotal,
 } from '../shared/Models/Basket';
-import { IGenericResponse, IProduct } from '../shared/Models/Product';
+
 import { IDelivery } from '../shared/Models/Delivery';
 import { NIL } from 'uuid';
 import { environment } from '../../environments/environment.development';
+import { IGenericResponse } from '../shared/Models/GenericResponse';
+import { IProduct } from '../shared/Models/Product';
 
 @Injectable({
   providedIn: 'root',

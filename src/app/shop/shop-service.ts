@@ -1,12 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IGenericResponse, IProduct } from '../shared/Models/Product';
+
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { BaseSearchCriteriaModel } from '../shared/Models/ProductParam';
 import { OrderingEnum } from '../shared/Models/OrderingEnum';
 import { IPaginatedResult } from '../shared/Models/PaginatedResult';
 import { ICategory } from '../shared/Models/Category';
+import { IProduct } from '../shared/Models/Product';
+import { IGenericResponse } from '../shared/Models/GenericResponse';
 
 @Injectable({
   providedIn: 'root'
