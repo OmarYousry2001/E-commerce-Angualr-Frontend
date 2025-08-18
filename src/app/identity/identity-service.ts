@@ -20,9 +20,11 @@ export class IdentityService {
     console.log( "Active Account: ",param);
     return this.http.post(this.baseURL + 'User/ConfirmEmail', param);
   }
-  Login(form: any) {
-    return this.http.post(this.baseURL + 'Account/Login', form);
-  }
+Login(form: any) {
+  return this.http.post(this.baseURL + 'Authentication/Login', form, {
+    withCredentials: true
+  });
+}
   forgetPassword(email: string) {
     return this.http.get(
       this.baseURL + `Account/send-email-forget-password?email=${email}`
