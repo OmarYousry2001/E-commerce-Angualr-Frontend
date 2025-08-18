@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { loaderInterceptor } from './core/Interceptor/loader-interceptor';
+import { credentialsInterceptor } from './core/Interceptor/credentials-interceptor';
 
 
 
@@ -36,11 +37,7 @@ import { loaderInterceptor } from './core/Interceptor/loader-interceptor';
       provideHttpClient(),
       provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: loaderInterceptor, multi: true },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: credentialsInterceptor,
-    //   multi: true,
-    // },
+    { provide: HTTP_INTERCEPTORS,useClass: credentialsInterceptor,multi: true},
 
   ],
   bootstrap: [App]
