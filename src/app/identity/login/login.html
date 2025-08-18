@@ -33,7 +33,7 @@
             </div>
             <div class="form-group pt-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <button class="btn btn-danger" routerLink="/account/Register">Create account?</button>
+                    <button class="btn btn-danger" routerLink="/account">Create account?</button>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Forget password
                     </button>
@@ -56,10 +56,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" (click)="SendEmailForgetpassword()" class="btn btn-primary">Send</button>
+                    <button type="button" (click)="SendEmailForForgotPassword()" class="btn btn-primary">Send</button>
                 </div>
             </div>
         </div>
     </div>
-</section>
 <!-- Button trigger modal -->
+
+
+</section>

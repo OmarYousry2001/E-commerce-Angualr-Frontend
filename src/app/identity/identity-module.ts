@@ -6,13 +6,15 @@ import { Register } from './register/register';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Active } from './active/active';
 import { Login } from './login/login';
+import { ResetPassword } from './reset-password/reset-password';
 
 
 @NgModule({
   declarations: [
     Register,
     Active,
-    Login
+    Login,
+    ResetPassword
   ],
   imports: [
     CommonModule,

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IdentityService } from '../identity-service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
+import * as bootstrap from 'bootstrap';
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -17,7 +18,9 @@ export class Login {
     private fb: FormBuilder,
     private _identityService: IdentityService,
      private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+      private _toaService: ToastrService,  
+
   ) {}
 
   ngOnInit(): void {
@@ -50,24 +53,43 @@ export class Login {
     if (this.formGroup.valid) {
       this._identityService.Login(this.formGroup.value).subscribe({
         next: (response) => {
-          console.log('Login successful', response);
-          this.router.navigateByUrl(this.returnUrl); // Redirect to home or another page after login
+          // console.log('Login successful', response);
+          this._toaService.success('Welcome back!', 'Login successful');
+          this.router.navigateByUrl(this.returnUrl); // Redirect to returnUrl or another page after login
         },
         error: (error) => {
-          console.error('Login failed', error);
+          this._toaService.error('Please check your Email or password and try again.', 'Login Failed');  
         },
       });
     }
   }
 
-  SendEmailForgetpassword() {
-    this._identityService.forgetPassword(this.emailModel).subscribe({
-      next(value) {
-        console.log(value);
-      },
-      error(err) {
-        console.log(err);
-      },
-    });
-  }
+SendEmailForForgotPassword() {
+  this._identityService.forgetPassword(this.emailModel).subscribe({
+    next: (value) => {
+      console.log(value);
+
+      const modalElement = document.getElementById('exampleModal');
+      if (modalElement) {
+        let modalInstance = bootstrap.Modal.getInstance(modalElement);
+        
+        if (!modalInstance) {
+          modalInstance = new bootstrap.Modal(modalElement);
+        }
+
+        modalInstance.hide();
+        const backdrops = document.getElementsByClassName('modal-backdrop');
+        while (backdrops.length > 0) {
+          backdrops[0].parentNode?.removeChild(backdrops[0]);
+        }
+      }
+      this._toaService.success('Please check your email for the reset link.', 'Email Sent');
+    
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
+
 }

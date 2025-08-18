@@ -26,7 +26,7 @@ import { loaderInterceptor } from './core/Interceptor/loader-interceptor';
       closeButton: true,
       positionClass: 'toast-top-right',
       countDuplicates: true,
-      timeOut: 1500,
+      timeOut: 2000,
       progressBar: true,
     }),
     NgxSpinnerModule

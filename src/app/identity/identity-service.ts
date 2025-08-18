@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { ActiveAccount } from '../shared/Models/ActiveAccount';
 import { ResetPasswordForm } from '../shared/Models/ResetPassword';
+import { IGenericResponse } from '../shared/Models/GenericResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,10 @@ Login(form: any) {
 }
   forgetPassword(email: string) {
     return this.http.get(
-      this.baseURL + `Account/send-email-forget-password?email=${email}`
+      this.baseURL + `User/SendResetPassword?email=${email}`
     );
   }
   ResetPassword(param: ResetPasswordForm) {
-    return this.http.post(this.baseURL + 'Account/reset-password', param);
+    return this.http.post<IGenericResponse<string>>(this.baseURL + 'User/ResetPassword', param);
   }
 }
