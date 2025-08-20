@@ -4,6 +4,7 @@ import { IdentityService } from '../identity-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import * as bootstrap from 'bootstrap';
+import { CoreService } from '../../core/core-service';
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -20,6 +21,9 @@ export class Login {
      private route: ActivatedRoute,
     private router: Router,
       private _toaService: ToastrService,  
+      private _coreService: CoreService,  
+
+      
 
   ) {}
 
@@ -55,6 +59,10 @@ export class Login {
         next: (response) => {
           // console.log('Login successful', response);
           this._toaService.success('Welcome back!', 'Login successful');
+          // this._coreService.setUserName(this.formGroup.value.email); 
+
+                  this._coreService.getUserName().subscribe();
+
           this.router.navigateByUrl(this.returnUrl); // Redirect to returnUrl or another page after login
         },
         error: (error) => {

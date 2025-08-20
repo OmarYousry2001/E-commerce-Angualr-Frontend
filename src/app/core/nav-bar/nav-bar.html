@@ -45,13 +45,22 @@
               <li class=" nav-item dropdown">
                     <a (click)="ToggleDropDown()" class="nav-link dropdown-toggle" id="navbarDropdown" role="button">
                         <i class="material-icons">account_circle</i>
+                       <span *ngIf="userName" class="ml-2">{{ userName }}</span>
 
                     </a>
                     <div [ngClass]="(visible)?'show':''" class="dropdown-menu dropdown-menu-right "
                         aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" routerLink="/account">Register <i
-                                class="fa fa-user-plus"></i></a>
+
+                        @if(!userName)
+                        {
                         <a class="dropdown-item" routerLink="/account/Login">Login <i class="fa fa-sign-in"></i> </a>
+                                                <a class="dropdown-item" routerLink="/account">Register <i class="fa fa-user-plus"></i></a>
+                        }
+                        @else {
+                       <button class="dropdown-item" (click)="logout()">Logout <i class="fa fa-sign-out"></i> </button>
+
+                        }
+
                         <a class=" dropdown-item" matBadgeSize="small" routerLink="/orders"> My Order <i
                                 class="fa fa-list"></i>
                         </a>
