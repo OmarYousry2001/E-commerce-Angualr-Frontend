@@ -24,7 +24,6 @@ export class Delivery {
     this._service.getDeliveryMethod().subscribe({
       next: (value) => {
         this.deliveries = value.data;
-        console.log( 'omar dilevry ',value);
       },
       error(err) {
         console.log(err);
@@ -36,21 +35,20 @@ export class Delivery {
     const delivery = this.deliveries.find(
       (x) => x.id === this.delivery.value.delivery
     );
-    console.log(delivery);
     this.basketService.SetShippingPrice(delivery);
   }
 
-  // CreatePayment() {
-  //   const id = this.deliveries.find(
-  //     (m) => m.id == this.delivery.value.delivery
-  //   ).id;
-  //   this.basketService.CreatePaymentIntent(id).subscribe({
-  //     next: (res) => {
-  //       this.toast.success('Payment Intent Created', 'SUCCESS');
-  //     },
-  //     error(err) {
-  //       console.log(err);
-  //     },
-  //   });
-  // }
+  CreatePayment() {
+    const id = this.deliveries.find(
+      (m) => m.id == this.delivery.value.delivery
+    ).id;
+    this.basketService.CreatePaymentIntent(id).subscribe({
+      next: (res) => {
+        this.toast.success('Payment Intent Created', 'SUCCESS');
+      },
+      error(err) {
+        console.log(err);
+      },
+    });
+  }
 }

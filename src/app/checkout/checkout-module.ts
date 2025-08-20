@@ -15,6 +15,7 @@ import { Stepper } from './stepper/stepper';
 import { Address } from './address/address';
 import { Delivery } from './delivery/delivery';
 import { MatRadioModule } from '@angular/material/radio';
+import { Payment } from './payment/payment';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MatRadioModule } from '@angular/material/radio';
     Checkout,
     Stepper,
     Address,
-    Delivery
+    Delivery,
+    Payment
 
   ],
   imports: [

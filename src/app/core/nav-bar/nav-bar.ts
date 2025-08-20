@@ -21,9 +21,6 @@ export class NavBar {
  const id = this.basketService.GetBasket(basketId).subscribe({
       next: (value) => {
         this.count = this.basketService.basket$;
-        console.log('basketService.basket$' ,this.count )
-        // this.count = value;
-  
       },
       error(er) {
         console.log(er);
@@ -35,5 +32,5 @@ export class NavBar {
   ToggleDropDown() {
     this.visible  = !this.visible ;
   }
-  IGenericResponse
+ 
 }

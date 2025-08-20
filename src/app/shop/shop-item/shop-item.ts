@@ -16,7 +16,6 @@ export class ShopItem {
       constructor(private _basketService: BasketService) {}
 
   SetBasketValue() {
-     console.log('hereProduct ', this.Product)
     this._basketService.addItemToBasket(this.Product);
    
   }

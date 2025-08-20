@@ -10,12 +10,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { loaderInterceptor } from './core/Interceptor/loader-interceptor';
 import { credentialsInterceptor } from './core/Interceptor/credentials-interceptor';
+import { Success } from './checkout/success/success';
 
 
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Success
   ],
   imports: [
     BrowserModule,

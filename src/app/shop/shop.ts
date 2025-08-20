@@ -67,7 +67,6 @@ SortingByPrice(sort: Event) {
 ];
 
  SelectedId(categoryId: string | null) {
-  console.log('categoryId is' , categoryId)
     this.ProductParam.categoryId = categoryId;
     this.ProductParam.pageNumber = 1;
     this.getAllProduct();

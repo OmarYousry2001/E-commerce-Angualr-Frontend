@@ -22,6 +22,7 @@ export class BasketService {
   BaseURL = environment.baseUrl;
   private basketSource = new BehaviorSubject<IBasket | null>(null); // for get Leasts Updates
   basket$ = this.basketSource.asObservable(); // for encapsulation – exposes read-only observable
+  
   private basketSourceTotal = new BehaviorSubject<IBasketTotal | null>(null);
   basketTotal$ = this.basketSourceTotal.asObservable();
 
@@ -49,7 +50,6 @@ export class BasketService {
         next: (value: IGenericResponse<IBasket>) => {
           this.basketSource.next(value.data);
           this.calculateTotal();
-          console.log(value);
         },
         error(err) {
           console.log(err);
@@ -185,13 +185,13 @@ export class BasketService {
     localStorage.removeItem('basketId');
   }
 
-    CreatePaymentIntent(deliveryMethodId: number = 3)  {
+    CreatePaymentIntent(deliveryMethodId: string )  {
     
     console.log(this.getCurrentValue()?.id);
     return this.http
       .post<IBasket>(
         this.BaseURL +
-          `Payments/Create?basketId=${
+          `Payment/Create?basketId=${
             this.getCurrentValue()?.id
           }&deliveryId=${deliveryMethodId}`,
         {}
