@@ -1,3 +1,27 @@
-<button mat-raised-button matStepperPrevious> back</button>
-<button mat-raised-button (click)="SubmitOrder()"> Payment
-    <i class="fa fa-cc-stripe text-info"></i></button>
+<form [formGroup]="paymentForm" (ngSubmit)="SubmitOrder()">
+  <div>
+    <label>Name on Card</label>
+    <input formControlName="nameOnCard" placeholder="John Doe">
+  </div>
+
+  <div>
+    <label>Card Number</label>
+    <div #cardNumber class="card-element"></div>
+  </div>
+
+  <div>
+    <label>Expiry Date</label>
+    <div #cardExpiry class="card-element"></div>
+  </div>
+
+  <div>
+    <label>CVC</label>
+    <div #cardCvc class="card-element"></div>
+  </div>
+
+  <div *ngIf="cardErrors" class="error">{{ cardErrors }}</div>
+  
+  <button type="submit" [disabled]="loader">
+    {{ loader ? 'Processing...' : 'Pay & Submit Order' }}
+  </button>
+</form>

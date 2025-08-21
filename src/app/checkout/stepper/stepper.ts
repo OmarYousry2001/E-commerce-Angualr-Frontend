@@ -22,4 +22,8 @@ export class Stepper {
   DeliveryMethod = this._formBuilder.group({
     delivery: ['', Validators.required],
   });
+
+   PaymentForm=this._formBuilder.group({
+    nameOnCard:['',Validators.required]
+  })
 }
